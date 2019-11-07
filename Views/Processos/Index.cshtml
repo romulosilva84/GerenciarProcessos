@@ -1,0 +1,113 @@
+﻿@model IEnumerable<GerenciarProcessos.Models.Processo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gerenciar Processos</h1>
+
+<p>
+    <a asp-action="Create">Adicionar processo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                Esta ativo ?
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estaativo)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProcessoID">Editar</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.ProcessoID">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.ProcessoID">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+<p>Soma dos processos ativos: <b>R$ @ViewBag.result1,00</b></p>
+@*<ul>
+    @foreach (var processos in (List<int>)ViewBag.result1)
+    {
+        <li>
+            <b>@processos</b>
+        </li>
+    }
+</ul>*@
+
+<p>Média do valor dos processos no Rio de Janeiro para o Cliente "Empresa A": <b>R$ @ViewBag.result2,00</b></p>
+
+<p>Número de processos com valor acima de R$ 100.000,00: <b>@ViewBag.result3</b></p>
+
+<p>Processos de Setembro de 2007: </p>
+<ul>
+    @foreach (var processos in (List<string>)ViewBag.result4)
+    {
+    <li>
+        <b>@processos</b>
+    </li>
+    }
+</ul>
+
+<p>Processos no mesmo estado do cliente, para cada um dos clientes:</p>
+<ul>
+    @foreach (var processos in ViewBag.result5)
+    {
+    <li>
+        <b>@processos</b>
+    </li>
+    }
+</ul>
+
+<p>Processos que contenham a sigla “TRAB”:</p>
+<ul>
+    @foreach (var processos in (List<string>)ViewBag.result6)
+    {
+    <li>
+        <b>@processos</b>
+    </li>
+    }
+</ul>

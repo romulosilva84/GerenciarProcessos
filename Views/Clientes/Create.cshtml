@@ -1,0 +1,76 @@
+﻿@model GerenciarProcessos.Models.Cliente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Inserir novos clientes</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cnpj" class="control-label"></label>
+                <input asp-for="Cnpj" class="form-control" />
+                <span asp-validation-for="Cnpj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Estado">Estado</label>
+                <select asp-for="Estado" class="form-control">
+                    <option value="">Selecione:</option>
+                    <option style="font-weight:bold" value="">Região Sudeste -----</option>
+                    <option>Espírito Santo</option>
+                    <option>Minas Gerais</option>
+                    <option>Rio de Janeiro</option>
+                    <option>São Paulo</option>
+                    <option style="font-weight:bold" value="">Região Sul -----</option>
+                    <option>Paraná</option>
+                    <option>Rio Grande do Sul</option>
+                    <option>Santa Catarina</option>
+                    <option style="font-weight:bold" value="">Região Centro-Oeste -----</option>
+                    <option>Distrito Federal</option>
+                    <option>Goiás</option>
+                    <option>Mato Grosso</option>
+                    <option>Mato Grosso do Sul</option>
+                    <option style="font-weight:bold" value="">Região Nordeste -----</option>
+                    <option>Alagoas</option>
+                    <option>Bahia</option>
+                    <option>Ceará</option>
+                    <option>Maranhão</option>
+                    <option>Paraíba</option>
+                    <option>Pernambuco</option>
+                    <option>Piauí</option>
+                    <option>Rio Grande do Norte</option>
+                    <option>Sergipe</option>
+                    <option style="font-weight:bold" value="">Região Norte -----</option>
+                    <option>Acre</option>
+                    <option>Amazonas</option>
+                    <option>Amapá</option>
+                    <option>Pará</option>
+                    <option>Rondônia</option>
+                    <option>Roraima</option>
+                    <option>Tocantins</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retornar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
